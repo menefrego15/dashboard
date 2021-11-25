@@ -1,43 +1,42 @@
-import { Icon } from '@iconify/react';
-import { capitalCase } from 'change-case';
-import { useState, useEffect } from 'react';
-import bellFill from '@iconify/icons-eva/bell-fill';
-import shareFill from '@iconify/icons-eva/share-fill';
-import roundVpnKey from '@iconify/icons-ic/round-vpn-key';
-import roundReceipt from '@iconify/icons-ic/round-receipt';
-import roundAccountBox from '@iconify/icons-ic/round-account-box';
+import { Icon } from "@iconify/react";
+import { capitalCase } from "change-case";
+import { useState, useEffect } from "react";
+import bellFill from "@iconify/icons-eva/bell-fill";
+import shareFill from "@iconify/icons-eva/share-fill";
+import roundVpnKey from "@iconify/icons-ic/round-vpn-key";
+import roundReceipt from "@iconify/icons-ic/round-receipt";
+import roundAccountBox from "@iconify/icons-ic/round-account-box";
 // material
-import { Container, Tab, Box, Tabs } from '@material-ui/core';
+import { Container, Tab, Box, Tabs } from "@material-ui/core";
 // redux
-import { RootState, useDispatch, useSelector } from '../../redux/store';
+import { RootState, useDispatch, useSelector } from "../../redux/store";
 import {
   getCards,
   getProfile,
   getInvoices,
   getAddressBook,
-  getNotifications
-} from '../../redux/slices/user';
+  getNotifications,
+} from "../../redux/slices/user";
 // routes
-import { PATH_DASHBOARD } from '../../routes/paths';
+import { PATH_DASHBOARD } from "../../routes/paths";
 // components
-import Page from '../../components/Page';
-import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
+import Page from "../../components/Page";
+import HeaderBreadcrumbs from "../../components/HeaderBreadcrumbs";
 import {
   AccountGeneral,
   AccountBilling,
   AccountSocialLinks,
   AccountNotifications,
-  AccountChangePassword
-} from '../../components/_dashboard/user/account';
+  AccountChangePassword,
+} from "../../components/_dashboard/user/account";
 
 // ----------------------------------------------------------------------
 
 export default function UserAccount() {
-  const [currentTab, setCurrentTab] = useState('general');
+  const [currentTab, setCurrentTab] = useState("general");
   const dispatch = useDispatch();
-  const { cards, invoices, myProfile, addressBook, notifications } = useSelector(
-    (state: RootState) => state.user
-  );
+  const { cards, invoices, myProfile, addressBook, notifications } =
+    useSelector((state: RootState) => state.user);
 
   useEffect(() => {
     dispatch(getCards());
@@ -61,41 +60,47 @@ export default function UserAccount() {
 
   const ACCOUNT_TABS = [
     {
-      value: 'general',
+      value: "general",
       icon: <Icon icon={roundAccountBox} width={20} height={20} />,
-      component: <AccountGeneral />
+      component: <AccountGeneral />,
     },
     {
-      value: 'billing',
+      value: "billing",
       icon: <Icon icon={roundReceipt} width={20} height={20} />,
-      component: <AccountBilling cards={cards} addressBook={addressBook} invoices={invoices} />
+      component: (
+        <AccountBilling
+          cards={cards}
+          addressBook={addressBook}
+          invoices={invoices}
+        />
+      ),
     },
     {
-      value: 'notifications',
+      value: "notifications",
       icon: <Icon icon={bellFill} width={20} height={20} />,
-      component: <AccountNotifications notifications={notifications} />
+      component: <AccountNotifications notifications={notifications} />,
     },
     {
-      value: 'social_links',
+      value: "social_links",
       icon: <Icon icon={shareFill} width={20} height={20} />,
-      component: <AccountSocialLinks myProfile={myProfile} />
+      component: <AccountSocialLinks myProfile={myProfile} />,
     },
     {
-      value: 'change_password',
+      value: "change_password",
       icon: <Icon icon={roundVpnKey} width={20} height={20} />,
-      component: <AccountChangePassword />
-    }
+      component: <AccountChangePassword />,
+    },
   ];
 
   return (
-    <Page title="User: Account Settings | Minimal-UI">
+    <Page title="User: Account Settings | MobyDeck">
       <Container>
         <HeaderBreadcrumbs
           heading="Account"
           links={[
-            { name: 'Dashboard', href: PATH_DASHBOARD.root },
-            { name: 'User', href: PATH_DASHBOARD.user.root },
-            { name: 'Account Settings' }
+            { name: "Dashboard", href: PATH_DASHBOARD.root },
+            { name: "User", href: PATH_DASHBOARD.user.root },
+            { name: "Account Settings" },
           ]}
         />
 

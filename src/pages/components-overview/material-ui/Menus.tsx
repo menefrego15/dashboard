@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState } from "react";
 // material
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import { experimentalStyled as styled } from '@material-ui/core/styles';
+import MoreVertIcon from "@material-ui/icons/MoreVert";
+import { experimentalStyled as styled } from "@material-ui/core/styles";
 import {
   Box,
   List,
@@ -12,51 +12,51 @@ import {
   MenuItem,
   Container,
   IconButton,
-  ListItemText
-} from '@material-ui/core';
+  ListItemText,
+} from "@material-ui/core";
 // routes
-import { PATH_PAGE } from '../../../routes/paths';
+import { PATH_PAGE } from "../../../routes/paths";
 // components
-import Page from '../../../components/Page';
-import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
+import Page from "../../../components/Page";
+import HeaderBreadcrumbs from "../../../components/HeaderBreadcrumbs";
 //
-import { Block } from '../Block';
+import { Block } from "../Block";
 
 // ----------------------------------------------------------------------
 
 const OPTIONS = [
-  'Show some love to Material-UI',
-  'Show all notification content',
-  'Hide sensitive notification content',
-  'Hide all notification content'
+  "Show some love to Material-UI",
+  "Show all notification content",
+  "Hide sensitive notification content",
+  "Hide all notification content",
 ];
 
 const OPTIONS_MAXHEIGHT = [
-  'None',
-  'Atria',
-  'Callisto',
-  'Dione',
-  'Ganymede',
-  'Hangouts Call',
-  'Luna',
-  'Oberon',
-  'Phobos',
-  'Pyxis',
-  'Sedna',
-  'Titania',
-  'Triton',
-  'Umbriel'
+  "None",
+  "Atria",
+  "Callisto",
+  "Dione",
+  "Ganymede",
+  "Hangouts Call",
+  "Luna",
+  "Oberon",
+  "Phobos",
+  "Pyxis",
+  "Sedna",
+  "Titania",
+  "Triton",
+  "Umbriel",
 ];
 
 const style = {
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center'
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
 };
 
 const RootStyle = styled(Page)(({ theme }) => ({
   paddingTop: theme.spacing(11),
-  paddingBottom: theme.spacing(15)
+  paddingBottom: theme.spacing(15),
 }));
 
 // ----------------------------------------------------------------------
@@ -65,7 +65,9 @@ export default function MenusComponent() {
   const [selectedIndex, setSelectedIndex] = useState(1);
   const [isOpen, setOpen] = useState<null | HTMLElement>(null);
   const [isOpenList, setOpenList] = useState<null | HTMLElement>(null);
-  const [isOpenMaxHeight, setOpenMaxHeight] = useState<null | HTMLElement>(null);
+  const [isOpenMaxHeight, setOpenMaxHeight] = useState<null | HTMLElement>(
+    null
+  );
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setOpenMaxHeight(event.currentTarget);
@@ -75,7 +77,10 @@ export default function MenusComponent() {
     setOpenList(event.currentTarget);
   };
 
-  const handleMenuItemClick = (event: React.MouseEvent<HTMLElement>, index: number) => {
+  const handleMenuItemClick = (
+    event: React.MouseEvent<HTMLElement>,
+    index: number
+  ) => {
     setSelectedIndex(index);
     setOpenList(null);
   };
@@ -93,25 +98,29 @@ export default function MenusComponent() {
   };
 
   return (
-    <RootStyle title="Components: Menus | Minimal-UI">
+    <RootStyle title="Components: Menus | MobyDeck">
       <Box
         sx={{
           pt: 6,
           pb: 1,
           mb: 10,
-          bgcolor: (theme) => (theme.palette.mode === 'light' ? 'grey.200' : 'grey.800')
+          bgcolor: (theme) =>
+            theme.palette.mode === "light" ? "grey.200" : "grey.800",
         }}
       >
         <Container maxWidth="lg">
           <HeaderBreadcrumbs
             heading="Menus"
-            links={[{ name: 'Components', href: PATH_PAGE.components }, { name: 'Menus' }]}
+            links={[
+              { name: "Components", href: PATH_PAGE.components },
+              { name: "Menus" },
+            ]}
             moreLink="https://next.material-ui.com/components/menus"
           />
         </Container>
       </Box>
       <Container maxWidth="lg">
-        <Stack direction={{ xs: 'column', md: 'row' }} spacing={3}>
+        <Stack direction={{ xs: "column", md: "row" }} spacing={3}>
           <Block title="Simple" sx={style}>
             <Button variant="outlined" onClick={handleOpen}>
               Open Menu
@@ -123,7 +132,7 @@ export default function MenusComponent() {
               onClose={handleClose}
               open={Boolean(isOpen)}
             >
-              {['Profile', 'My account', 'Logout'].map((option) => (
+              {["Profile", "My account", "Logout"].map((option) => (
                 <MenuItem key={option} onClick={handleClose}>
                   {option}
                 </MenuItem>
@@ -140,7 +149,10 @@ export default function MenusComponent() {
                 aria-label="when device is locked"
                 onClick={handleClickListItem}
               >
-                <ListItemText primary="When device is locked" secondary={OPTIONS[selectedIndex]} />
+                <ListItemText
+                  primary="When device is locked"
+                  secondary={OPTIONS[selectedIndex]}
+                />
               </ListItem>
             </List>
             <Menu
@@ -181,12 +193,16 @@ export default function MenusComponent() {
               PaperProps={{
                 style: {
                   maxHeight: 48 * 4.5,
-                  width: '20ch'
-                }
+                  width: "20ch",
+                },
               }}
             >
               {OPTIONS_MAXHEIGHT.map((option) => (
-                <MenuItem key={option} selected={option === 'Pyxis'} onClick={handleMaxHeightClose}>
+                <MenuItem
+                  key={option}
+                  selected={option === "Pyxis"}
+                  onClick={handleMaxHeightClose}
+                >
                   {option}
                 </MenuItem>
               ))}

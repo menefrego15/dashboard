@@ -1,9 +1,9 @@
 // material
-import { Container, Grid } from '@material-ui/core';
+import { Container, Grid } from "@material-ui/core";
 // hooks
-import useAuth from '../../hooks/useAuth';
+import useAuth from "../../hooks/useAuth";
 // components
-import Page from '../../components/Page';
+import Page from "../../components/Page";
 import {
   AppWelcome,
   AppWidgets1,
@@ -17,8 +17,8 @@ import {
   AppTotalInstalled,
   AppCurrentDownload,
   AppTotalActiveUsers,
-  AppTopInstalledCountries
-} from '../../components/_dashboard/general-app';
+  AppTopInstalledCountries,
+} from "../../components/_dashboard/general-app";
 
 // ----------------------------------------------------------------------
 
@@ -26,7 +26,7 @@ export default function GeneralApp() {
   const { user } = useAuth();
 
   return (
-    <Page title="Dashboard: App | Minimal-UI">
+    <Page title="Dashboard: App | MobyDeck">
       <Container maxWidth="xl">
         <Grid container spacing={3}>
           <Grid item xs={12} md={8}>

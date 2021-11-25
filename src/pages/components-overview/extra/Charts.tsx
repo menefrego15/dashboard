@@ -1,11 +1,18 @@
 // material
-import { experimentalStyled as styled } from '@material-ui/core/styles';
-import { Box, Card, Grid, Container, CardHeader, CardContent } from '@material-ui/core';
+import { experimentalStyled as styled } from "@material-ui/core/styles";
+import {
+  Box,
+  Card,
+  Grid,
+  Container,
+  CardHeader,
+  CardContent,
+} from "@material-ui/core";
 // routes
-import { PATH_PAGE } from '../../../routes/paths';
+import { PATH_PAGE } from "../../../routes/paths";
 // components
-import Page from '../../../components/Page';
-import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
+import Page from "../../../components/Page";
+import HeaderBreadcrumbs from "../../../components/HeaderBreadcrumbs";
 import {
   ChartPie,
   ChartBar,
@@ -18,31 +25,35 @@ import {
   ChartColumnSingle,
   ChartColumnStacked,
   ChartColumnNegative,
-  ChartColumnMultiple
-} from '../../../components/charts';
+  ChartColumnMultiple,
+} from "../../../components/charts";
 
 // ----------------------------------------------------------------------
 
 const RootStyle = styled(Page)(({ theme }) => ({
   paddingTop: theme.spacing(11),
-  paddingBottom: theme.spacing(15)
+  paddingBottom: theme.spacing(15),
 }));
 
 export default function Charts() {
   return (
-    <RootStyle title="Components: Charts | Minimal-UI">
+    <RootStyle title="Components: Charts | MobyDeck">
       <Box
         sx={{
           pt: 6,
           pb: 1,
           mb: 10,
-          bgcolor: (theme) => (theme.palette.mode === 'light' ? 'grey.200' : 'grey.800')
+          bgcolor: (theme) =>
+            theme.palette.mode === "light" ? "grey.200" : "grey.800",
         }}
       >
         <Container maxWidth="lg">
           <HeaderBreadcrumbs
             heading="Charts"
-            links={[{ name: 'Components', href: PATH_PAGE.components }, { name: 'Charts' }]}
+            links={[
+              { name: "Components", href: PATH_PAGE.components },
+              { name: "Charts" },
+            ]}
             moreLink="https://apexcharts.com"
           />
         </Container>
@@ -128,9 +139,9 @@ export default function Charts() {
               <CardContent
                 sx={{
                   height: 420,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
                 }}
               >
                 <ChartPie />
@@ -144,9 +155,9 @@ export default function Charts() {
               <CardContent
                 sx={{
                   height: 420,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
                 }}
               >
                 <ChartDonut />
@@ -160,9 +171,9 @@ export default function Charts() {
               <CardContent
                 sx={{
                   height: 420,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
                 }}
               >
                 <ChartRadialBar />
@@ -176,9 +187,9 @@ export default function Charts() {
               <CardContent
                 sx={{
                   height: 420,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
                 }}
               >
                 <ChartsRadarBar />

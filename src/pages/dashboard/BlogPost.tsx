@@ -1,33 +1,46 @@
-import { useEffect } from 'react';
-import { sentenceCase } from 'change-case';
-import { useParams } from 'react-router-dom';
+import { useEffect } from "react";
+import { sentenceCase } from "change-case";
+import { useParams } from "react-router-dom";
 // material
-import { Box, Card, Divider, Skeleton, Container, Typography, Pagination } from '@material-ui/core';
+import {
+  Box,
+  Card,
+  Divider,
+  Skeleton,
+  Container,
+  Typography,
+  Pagination,
+} from "@material-ui/core";
 // redux
-import { useDispatch, useSelector } from '../../redux/store';
-import { getPost, getRecentPosts } from '../../redux/slices/blog';
+import { useDispatch, useSelector } from "../../redux/store";
+import { getPost, getRecentPosts } from "../../redux/slices/blog";
 // @types
-import { BlogState } from '../../@types/blog';
+import { BlogState } from "../../@types/blog";
 // routes
-import { PATH_DASHBOARD } from '../../routes/paths';
+import { PATH_DASHBOARD } from "../../routes/paths";
 // components
-import Page from '../../components/Page';
-import Markdown from '../../components/Markdown';
-import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
+import Page from "../../components/Page";
+import Markdown from "../../components/Markdown";
+import HeaderBreadcrumbs from "../../components/HeaderBreadcrumbs";
 import {
   BlogPostHero,
   BlogPostTags,
   BlogPostRecent,
   BlogPostCommentList,
-  BlogPostCommentForm
-} from '../../components/_dashboard/blog';
+  BlogPostCommentForm,
+} from "../../components/_dashboard/blog";
 
 // ----------------------------------------------------------------------
 
 const SkeletonLoad = (
   <>
-    <Skeleton width="100%" height={560} variant="rectangular" sx={{ borderRadius: 2 }} />
-    <Box sx={{ mt: 3, display: 'flex', alignItems: 'center' }}>
+    <Skeleton
+      width="100%"
+      height={560}
+      variant="rectangular"
+      sx={{ borderRadius: 2 }}
+    />
+    <Box sx={{ mt: 3, display: "flex", alignItems: "center" }}>
       <Skeleton variant="circular" width={64} height={64} />
       <Box sx={{ flexGrow: 1, ml: 2 }}>
         <Skeleton variant="text" height={20} />
@@ -41,7 +54,9 @@ const SkeletonLoad = (
 export default function BlogPost() {
   const dispatch = useDispatch();
   const { title } = useParams();
-  const { post, error, recentPosts } = useSelector((state: { blog: BlogState }) => state.blog);
+  const { post, error, recentPosts } = useSelector(
+    (state: { blog: BlogState }) => state.blog
+  );
 
   useEffect(() => {
     dispatch(getPost(title));
@@ -49,14 +64,14 @@ export default function BlogPost() {
   }, [dispatch, title]);
 
   return (
-    <Page title="Blog: Post Details | Minimal-UI">
+    <Page title="Blog: Post Details | MobyDeck">
       <Container>
         <HeaderBreadcrumbs
           heading="Post Details"
           links={[
-            { name: 'Dashboard', href: PATH_DASHBOARD.root },
-            { name: 'Blog', href: PATH_DASHBOARD.blog.root },
-            { name: sentenceCase(title) }
+            { name: "Dashboard", href: PATH_DASHBOARD.root },
+            { name: "Blog", href: PATH_DASHBOARD.blog.root },
+            { name: sentenceCase(title) },
           ]}
         />
 
@@ -77,16 +92,23 @@ export default function BlogPost() {
                 <Divider />
               </Box>
 
-              <Box sx={{ display: 'flex', mb: 2 }}>
+              <Box sx={{ display: "flex", mb: 2 }}>
                 <Typography variant="h4">Comments</Typography>
-                <Typography variant="subtitle2" sx={{ color: 'text.disabled' }}>
+                <Typography variant="subtitle2" sx={{ color: "text.disabled" }}>
                   ({post.comments.length})
                 </Typography>
               </Box>
 
               <BlogPostCommentList post={post} />
 
-              <Box sx={{ mb: 5, mt: 3, display: 'flex', justifyContent: 'flex-end' }}>
+              <Box
+                sx={{
+                  mb: 5,
+                  mt: 3,
+                  display: "flex",
+                  justifyContent: "flex-end",
+                }}
+              >
                 <Pagination count={8} color="primary" />
               </Box>
 

@@ -1,22 +1,27 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 // material
-import { Container, Card } from '@material-ui/core';
+import { Container, Card } from "@material-ui/core";
 // redux
-import { useDispatch } from '../../redux/store';
-import { getLabels } from '../../redux/slices/mail';
+import { useDispatch } from "../../redux/store";
+import { getLabels } from "../../redux/slices/mail";
 // routes
-import { PATH_DASHBOARD } from '../../routes/paths';
+import { PATH_DASHBOARD } from "../../routes/paths";
 // components
-import Page from '../../components/Page';
-import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
-import { MailList, MailDetails, MailSidebar, MailCompose } from '../../components/_dashboard/mail';
+import Page from "../../components/Page";
+import HeaderBreadcrumbs from "../../components/HeaderBreadcrumbs";
+import {
+  MailList,
+  MailDetails,
+  MailSidebar,
+  MailCompose,
+} from "../../components/_dashboard/mail";
 
 // ----------------------------------------------------------------------
 
 export default function Mail() {
   const dispatch = useDispatch();
-  const { mailId = '' } = useParams();
+  const { mailId = "" } = useParams();
   const [openSidebar, setOpenSidebar] = useState(false);
   const [openCompose, setOpenCompose] = useState(false);
 
@@ -25,26 +30,33 @@ export default function Mail() {
   }, [dispatch]);
 
   return (
-    <Page title="Mail | Minimal-UI">
+    <Page title="Mail | MobyDeck">
       <Container maxWidth="xl">
         <HeaderBreadcrumbs
           heading="Mail"
           links={[
             {
-              name: 'Dashboard',
-              href: PATH_DASHBOARD.root
+              name: "Dashboard",
+              href: PATH_DASHBOARD.root,
             },
-            { name: 'Mail' }
+            { name: "Mail" },
           ]}
         />
-        <Card sx={{ height: { md: '72vh' }, display: { md: 'flex' } }}>
+        <Card sx={{ height: { md: "72vh" }, display: { md: "flex" } }}>
           <MailSidebar
             isOpenSidebar={openSidebar}
             onCloseSidebar={() => setOpenSidebar(false)}
             onOpenCompose={() => setOpenCompose(true)}
           />
-          {mailId ? <MailDetails /> : <MailList onOpenSidebar={() => setOpenSidebar(true)} />}
-          <MailCompose isOpenCompose={openCompose} onCloseCompose={() => setOpenCompose(false)} />
+          {mailId ? (
+            <MailDetails />
+          ) : (
+            <MailList onOpenSidebar={() => setOpenSidebar(true)} />
+          )}
+          <MailCompose
+            isOpenCompose={openCompose}
+            onCloseCompose={() => setOpenCompose(false)}
+          />
         </Card>
       </Container>
     </Page>

@@ -1,37 +1,38 @@
 // material
-import { experimentalStyled as styled } from '@material-ui/core/styles';
-import { Box, Card, Container, CardContent } from '@material-ui/core';
+import { experimentalStyled as styled } from "@material-ui/core/styles";
+import { Box, Card, Container, CardContent } from "@material-ui/core";
 // routes
-import { PATH_PAGE } from '../../../routes/paths';
+import { PATH_PAGE } from "../../../routes/paths";
 // components
-import Page from '../../../components/Page';
-import CopyClipboard from '../../../components/CopyClipboard';
-import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
+import Page from "../../../components/Page";
+import CopyClipboard from "../../../components/CopyClipboard";
+import HeaderBreadcrumbs from "../../../components/HeaderBreadcrumbs";
 
 // ----------------------------------------------------------------------
 
 const RootStyle = styled(Page)(({ theme }) => ({
   paddingTop: theme.spacing(11),
-  paddingBottom: theme.spacing(15)
+  paddingBottom: theme.spacing(15),
 }));
 
 export default function CopyToClipboard() {
   return (
-    <RootStyle title="Components: Copy To Clipboard | Minimal-UI">
+    <RootStyle title="Components: Copy To Clipboard | MobyDeck">
       <Box
         sx={{
           pt: 6,
           pb: 1,
           mb: 10,
-          bgcolor: (theme) => (theme.palette.mode === 'light' ? 'grey.200' : 'grey.800')
+          bgcolor: (theme) =>
+            theme.palette.mode === "light" ? "grey.200" : "grey.800",
         }}
       >
         <Container maxWidth="lg">
           <HeaderBreadcrumbs
             heading="Copy To Clipboard"
             links={[
-              { name: 'Components', href: PATH_PAGE.components },
-              { name: 'Copy To Clipboard' }
+              { name: "Components", href: PATH_PAGE.components },
+              { name: "Copy To Clipboard" },
             ]}
             moreLink="https://www.npmjs.com/package/react-copy-to-clipboard"
           />

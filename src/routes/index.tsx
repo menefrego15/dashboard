@@ -78,6 +78,8 @@ export default function Router() {
       children: [
         { path: "/", element: <Navigate to="/dashboard/app" replace /> },
         { path: "app", element: <GeneralApp /> },
+        { path: "3dcarousel", element: <Carousel3d /> },
+        { path: "carousel", element: <Carousel2d /> },
         { path: "ecommerce", element: <GeneralEcommerce /> },
         {
           path: "analytics",
@@ -256,6 +258,10 @@ const VerifyCode = Loadable(
 const GeneralApp = Loadable(
   lazy(() => import("../pages/dashboard/GeneralApp"))
 );
+const Carousel3d = Loadable(
+  lazy(() => import("../pages/dashboard/Carousel3d"))
+);
+const Carousel2d = Loadable(lazy(() => import("../pages/dashboard/Carousel")));
 const GeneralEcommerce = Loadable(
   lazy(() => import("../pages/dashboard/GeneralEcommerce"))
 );
@@ -429,9 +435,6 @@ const TreeView = Loadable(
 );
 const Charts = Loadable(
   lazy(() => import("../pages/components-overview/extra/Charts"))
-);
-const Map = Loadable(
-  lazy(() => import("../pages/components-overview/extra/Map"))
 );
 const Editor = Loadable(
   lazy(() => import("../pages/components-overview/extra/Editor"))

@@ -1,6 +1,6 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback } from "react";
 // material
-import { experimentalStyled as styled } from '@material-ui/core/styles';
+import { experimentalStyled as styled } from "@material-ui/core/styles";
 import {
   Box,
   Card,
@@ -10,22 +10,26 @@ import {
   CardHeader,
   Typography,
   CardContent,
-  FormControlLabel
-} from '@material-ui/core';
+  FormControlLabel,
+} from "@material-ui/core";
 // routes
-import { PATH_PAGE } from '../../../routes/paths';
+import { PATH_PAGE } from "../../../routes/paths";
 // utils
-import { fData } from '../../../utils/formatNumber';
+import { fData } from "../../../utils/formatNumber";
 // components
-import Page from '../../../components/Page';
-import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
-import { UploadAvatar, UploadMultiFile, UploadSingleFile } from '../../../components/upload';
+import Page from "../../../components/Page";
+import HeaderBreadcrumbs from "../../../components/HeaderBreadcrumbs";
+import {
+  UploadAvatar,
+  UploadMultiFile,
+  UploadSingleFile,
+} from "../../../components/upload";
 
 // ----------------------------------------------------------------------
 
 const RootStyle = styled(Page)(({ theme }) => ({
   paddingTop: theme.spacing(11),
-  paddingBottom: theme.spacing(15)
+  paddingBottom: theme.spacing(15),
 }));
 
 export default function Upload() {
@@ -39,7 +43,7 @@ export default function Upload() {
     if (file) {
       setFile({
         ...file,
-        preview: URL.createObjectURL(file)
+        preview: URL.createObjectURL(file),
       });
     }
   }, []);
@@ -49,7 +53,7 @@ export default function Upload() {
     if (file) {
       setAvatarUrl({
         ...file,
-        preview: URL.createObjectURL(file)
+        preview: URL.createObjectURL(file),
       });
     }
   }, []);
@@ -59,7 +63,7 @@ export default function Upload() {
       setFiles(
         acceptedFiles.map((file: File) =>
           Object.assign(file, {
-            preview: URL.createObjectURL(file)
+            preview: URL.createObjectURL(file),
           })
         )
       );
@@ -77,19 +81,23 @@ export default function Upload() {
   };
 
   return (
-    <RootStyle title="Components: Upload | Minimal-UI">
+    <RootStyle title="Components: Upload | MobyDeck">
       <Box
         sx={{
           pt: 6,
           pb: 1,
           mb: 10,
-          bgcolor: (theme) => (theme.palette.mode === 'light' ? 'grey.200' : 'grey.800')
+          bgcolor: (theme) =>
+            theme.palette.mode === "light" ? "grey.200" : "grey.800",
         }}
       >
         <Container maxWidth="lg">
           <HeaderBreadcrumbs
             heading="Upload"
-            links={[{ name: 'Components', href: PATH_PAGE.components }, { name: 'Upload' }]}
+            links={[
+              { name: "Components", href: PATH_PAGE.components },
+              { name: "Upload" },
+            ]}
             moreLink="https://react-dropzone.js.org/#section-basic-example"
           />
         </Container>
@@ -142,10 +150,10 @@ export default function Upload() {
                     variant="caption"
                     sx={{
                       mt: 2,
-                      mx: 'auto',
-                      display: 'block',
-                      textAlign: 'center',
-                      color: 'text.secondary'
+                      mx: "auto",
+                      display: "block",
+                      textAlign: "center",
+                      color: "text.secondary",
                     }}
                   >
                     Allowed *.jpeg, *.jpg, *.png, *.gif

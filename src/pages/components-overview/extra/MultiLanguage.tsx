@@ -1,5 +1,5 @@
 // material
-import { experimentalStyled as styled } from '@material-ui/core/styles';
+import { experimentalStyled as styled } from "@material-ui/core/styles";
 import {
   Box,
   Card,
@@ -7,40 +7,44 @@ import {
   Container,
   Typography,
   RadioGroup,
-  FormControlLabel
-} from '@material-ui/core';
+  FormControlLabel,
+} from "@material-ui/core";
 // routes
-import { PATH_PAGE } from '../../../routes/paths';
+import { PATH_PAGE } from "../../../routes/paths";
 // hooks
-import useLocales from '../../../hooks/useLocales';
+import useLocales from "../../../hooks/useLocales";
 // components
-import Page from '../../../components/Page';
-import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
+import Page from "../../../components/Page";
+import HeaderBreadcrumbs from "../../../components/HeaderBreadcrumbs";
 
 // ----------------------------------------------------------------------
 
 const RootStyle = styled(Page)(({ theme }) => ({
   paddingTop: theme.spacing(11),
-  paddingBottom: theme.spacing(15)
+  paddingBottom: theme.spacing(15),
 }));
 
 export default function MultiLanguage() {
   const { allLang, currentLang, translate, onChangeLang } = useLocales();
 
   return (
-    <RootStyle title="Components: Multi Language | Minimal-UI">
+    <RootStyle title="Components: Multi Language | MobyDeck">
       <Box
         sx={{
           pt: 6,
           pb: 1,
           mb: 10,
-          bgcolor: (theme) => (theme.palette.mode === 'light' ? 'grey.200' : 'grey.800')
+          bgcolor: (theme) =>
+            theme.palette.mode === "light" ? "grey.200" : "grey.800",
         }}
       >
         <Container maxWidth="lg">
           <HeaderBreadcrumbs
             heading="Multi Language"
-            links={[{ name: 'Components', href: PATH_PAGE.components }, { name: 'Multi Language' }]}
+            links={[
+              { name: "Components", href: PATH_PAGE.components },
+              { name: "Multi Language" },
+            ]}
             moreLink="https://react.i18next.com"
           />
         </Container>
@@ -63,11 +67,18 @@ export default function MultiLanguage() {
             ))}
           </RadioGroup>
 
-          <Box sx={{ my: 3, display: 'flex', alignItems: 'center' }}>
-            <Box component="img" alt={currentLang.label} src={currentLang.icon} sx={{ mr: 1 }} />
-            <Typography variant="h2">{translate('demo.title')}</Typography>
+          <Box sx={{ my: 3, display: "flex", alignItems: "center" }}>
+            <Box
+              component="img"
+              alt={currentLang.label}
+              src={currentLang.icon}
+              sx={{ mr: 1 }}
+            />
+            <Typography variant="h2">{translate("demo.title")}</Typography>
           </Box>
-          <Typography variant="body1">{translate('demo.introduction')}</Typography>
+          <Typography variant="body1">
+            {translate("demo.introduction")}
+          </Typography>
         </Card>
       </Container>
     </RootStyle>
