@@ -37,8 +37,8 @@ export default function Logo({ sx }: BoxProps) {
             y2="100"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#FFB17D" />
-            <stop offset="1" stop-color="#FA6400" />
+            <stop stopColor="#FFB17D" />
+            <stop offset="1" stopColor="#FA6400" />
           </linearGradient>
           <linearGradient
             id="paint1_linear_57_27342"
@@ -48,8 +48,8 @@ export default function Logo({ sx }: BoxProps) {
             y2="76"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#FFB17D" />
-            <stop offset="1" stop-color="#FA6400" />
+            <stop stopColor="#FFB17D" />
+            <stop offset="1" stopColor="#FA6400" />
           </linearGradient>
         </defs>
       </svg>

@@ -1,13 +1,19 @@
-import faker from 'faker';
-import Slider from 'react-slick';
-import { useRef } from 'react';
+import faker from "faker";
+import Slider from "react-slick";
+import { useRef } from "react";
 // material
-import { useTheme, experimentalStyled as styled } from '@material-ui/core/styles';
-import { Box } from '@material-ui/core';
+import {
+  useTheme,
+  experimentalStyled as styled,
+} from "@material-ui/core/styles";
+import { Box, Typography } from "@material-ui/core";
 // utils
-import { mockImgFeed } from '../../utils/mockImages';
+import { mockImgFeed } from "../../utils/mockImages";
 //
-import { CarouselControlsPaging2, CarouselControlsArrowsBasic2 } from './controls';
+import {
+  CarouselControlsPaging2,
+  CarouselControlsArrowsBasic2,
+} from "./controls";
 
 // ----------------------------------------------------------------------
 
@@ -16,16 +22,17 @@ const CAROUSELS = [...Array(5)].map((_, index) => {
   return {
     title: faker.name.title(),
     description: faker.lorem.paragraphs(),
-    image: mockImgFeed(setIndex)
+    image: mockImgFeed(setIndex),
   };
 });
 
 const RootStyle = styled(Box)(({ theme }) => ({
-  position: 'relative',
-  '& .slick-list': {
+  width: "80%",
+  position: "relative",
+  "& .slick-list": {
     boxShadow: theme.customShadows.z16,
-    borderRadius: theme.shape.borderRadiusMd
-  }
+    borderRadius: theme.shape.borderRadiusMd,
+  },
 }));
 
 // ----------------------------------------------------------------------
@@ -40,12 +47,9 @@ function CarouselItem({ item }: { item: CarouselItemProps }) {
   const { image, title } = item;
 
   return (
-    <Box
-      component="img"
-      alt={title}
-      src={image}
-      sx={{ width: '100%', height: 480, objectFit: 'cover' }}
-    />
+    <Box sx={{ width: "100%", height: 480, backgroundColor: "#FA6400" }}>
+      <Typography variant="h3">{title}</Typography>
+    </Box>
   );
 }
 
@@ -60,10 +64,10 @@ export default function CarouselBasic3() {
     autoplay: true,
     slidesToShow: 1,
     slidesToScroll: 1,
-    rtl: Boolean(theme.direction === 'rtl'),
+    rtl: Boolean(theme.direction === "rtl"),
     ...CarouselControlsPaging2({
-      sx: { mt: 3 }
-    })
+      sx: { mt: 3 },
+    }),
   };
 
   const handlePrevious = () => {
@@ -75,13 +79,18 @@ export default function CarouselBasic3() {
   };
 
   return (
-    <RootStyle>
-      <Slider ref={carouselRef} {...settings}>
-        {CAROUSELS.map((item) => (
-          <CarouselItem key={item.title} item={item} />
-        ))}
-      </Slider>
-      <CarouselControlsArrowsBasic2 onNext={handleNext} onPrevious={handlePrevious} />
-    </RootStyle>
+    <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
+      <RootStyle>
+        <Slider ref={carouselRef} {...settings}>
+          {CAROUSELS.map((item) => (
+            <CarouselItem key={item.title} item={item} />
+          ))}
+        </Slider>
+        <CarouselControlsArrowsBasic2
+          onNext={handleNext}
+          onPrevious={handlePrevious}
+        />
+      </RootStyle>
+    </div>
   );
 }
